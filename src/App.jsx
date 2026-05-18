@@ -53,6 +53,11 @@ function App() {
     return flags[language] || language;
   }
 
+  // funzione che converte il voto da 1-10 in stelle da 1-5
+  function getStars(vote) {
+    return Math.ceil(vote / 2);
+  }
+
   return (
     <div>
 
@@ -73,10 +78,16 @@ function App() {
             <p>Titolo: {movie.title}</p>
             <p>Titolo originale: {movie.original_title}</p>
             <p>Lingua: {getFlag(movie.original_language)}</p>
-            <p>Voto: {movie.vote_average}</p>
+            {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
+            <p>Voto:
+              {Array.from({ length: 5 }, (_, i) => (
+                <i key={i} className={i < getStars(movie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+              ))}
+            </p>
             <p>Tipo: 🎬 Film</p>
           </li>
         ))}
+        
       </ul>
       {/* lista serie TV */}
       <ul>
@@ -86,7 +97,12 @@ function App() {
             <p>Titolo: {serie.name}</p>
             <p>Titolo originale: {serie.original_name}</p>
             <p>Lingua: {getFlag(serie.original_language)}</p>
-            <p>Voto: {serie.vote_average}</p>
+            {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
+            <p>Voto:
+              {Array.from({ length: 5 }, (_, i) => (
+                <i key={i} className={i < getStars(serie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+              ))}
+            </p>
             <p>Tipo: 📺 Serie TV</p>
           </li>
         ))}

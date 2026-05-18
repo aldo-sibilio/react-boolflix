@@ -20,7 +20,26 @@ function App() {
       });
   }
 
- return (
+  // funzione che converte il codice lingua in una bandiera emoji
+  function getFlag(language) {
+    const flags = {
+      en: "🇬🇧",
+      it: "🇮🇹",
+      fr: "🇫🇷",
+      de: "🇩🇪",
+      es: "🇪🇸",
+      ja: "🇯🇵",
+      ko: "🇰🇷",
+      zh: "🇨🇳",
+      pt: "🇵🇹",
+      ru: "🇷🇺",
+    };
+
+    // se non troviamo la bandiera, mostriamo il codice lingua
+    return flags[language] || language;
+  }
+
+  return (
     <div>
 
       {/* searchbar */}
@@ -38,7 +57,7 @@ function App() {
           <li key={movie.id}>
             <p>Titolo: {movie.title}</p>
             <p>Titolo originale: {movie.original_title}</p>
-            <p>Lingua: {movie.original_language}</p>
+            <p>Lingua: {getFlag(movie.original_language)}</p>
             <p>Voto: {movie.vote_average}</p>
           </li>
         ))}

@@ -20,8 +20,31 @@ function App() {
       });
   }
 
-  return (
-    <div>App</div>
-  )
+ return (
+    <div>
+
+      {/* searchbar */}
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Cerca un film..."
+      />
+      <button onClick={searchMovies}>Cerca</button>
+
+      {/* lista risultati */}
+      <ul>
+        {movies.map((movie) => (
+          <li key={movie.id}>
+            <p>Titolo: {movie.title}</p>
+            <p>Titolo originale: {movie.original_title}</p>
+            <p>Lingua: {movie.original_language}</p>
+            <p>Voto: {movie.vote_average}</p>
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  );
 }
 export default App

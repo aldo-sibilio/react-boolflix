@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -10,6 +10,12 @@ function App() {
 
   // stato per i risultati delle serie TV
   const [series, setSeries] = useState([]);
+
+  // stato per i film popolari
+  const [popularMovies, setPopularMovies] = useState([]);
+
+  // stato per le serie popolari
+  const [popularSeries, setPopularSeries] = useState([]);
 
   // funzione che chiama l'API
   function search() {
@@ -34,6 +40,31 @@ function App() {
         console.error("Errore serie:", error);
       });
   }
+
+  // al caricamento della pagina carichiamo i film e le serie popolari
+  useEffect(() => {
+
+    // chiamata per i film popolari
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=it-IT`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPopularMovies(data.results);
+      })
+      .catch((error) => {
+        console.error("Errore film popolari:", error);
+      });
+
+    // chiamata per le serie popolari
+    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${import.meta.env.VITE_TMDB_KEY}&language=it-IT`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPopularSeries(data.results);
+      })
+      .catch((error) => {
+        console.error("Errore serie popolari:", error);
+      });
+
+  }, []); // array vuoto = eseguito solo al caricamento
 
   // funzione che converte il codice lingua in una bandiera emoji
   function getFlag(language) {

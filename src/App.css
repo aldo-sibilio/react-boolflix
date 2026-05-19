@@ -57,6 +57,7 @@ main {
 .card {
     width: 200px;
     height: 300px;
+    flex-shrink: 0;
     background-size: cover;
     background-position: center;
     border-radius: 4px;
@@ -94,4 +95,41 @@ main {
 
 .card-info .fa-regular.fa-star {
     color: gold;
+}
+
+/* carosello */
+.carousel-section {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.carousel-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.carousel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+/* nascondiamo la scrollbar ma manteniamo la funzionalità */
+.carousel::-webkit-scrollbar {
+    height: 4px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #e50914;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
 }

@@ -84,5 +84,14 @@ main {
 
 /* info visibili all'hover */
 .card:hover .card-info {
-  opacity: 1;
+    opacity: 1;
+}
+
+/* stelle gialle */
+.card-info .fa-solid.fa-star {
+    color: gold;
+}
+
+.card-info .fa-regular.fa-star {
+    color: gold;
 }

@@ -61,52 +61,60 @@ function App() {
   return (
     <div>
 
-      {/* searchbar */}
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Cerca un film..."
-      />
-      <button onClick={search}>Cerca</button>
+      {/* header con titolo e searchbar */}
+      <header>
+        <h1>BoolFlix</h1>
+        <div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Cerca un film..."
+          />
+          <button onClick={search}>Cerca</button>
+        </div>
+      </header>
 
-      {/* lista risultati */}
-      <ul>
+      {/* main con le card */}
+      <main>
+
+        {/* card film */}
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
-            <p>Titolo: {movie.title}</p>
-            <p>Titolo originale: {movie.original_title}</p>
-            <p>Lingua: {getFlag(movie.original_language)}</p>
-            {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
-            <p>Voto:
-              {Array.from({ length: 5 }, (_, i) => (
-                <i key={i} className={i < getStars(movie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-              ))}
-            </p>
-            <p>Tipo: 🎬 Film</p>
-          </li>
+          <div className="card" key={movie.id} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>
+            <div className="card-info">
+              <p>Titolo: {movie.title}</p>
+              <p>Titolo originale: {movie.original_title}</p>
+              <p>Lingua: {getFlag(movie.original_language)}</p>
+              <p>Voto:
+                {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
+                {Array.from({ length: 5 }, (_, i) => (
+                  <i key={i} className={i < getStars(movie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                ))}
+              </p>
+              <p>Tipo: 🎬 Film</p>
+            </div>
+          </div>
         ))}
-        
-      </ul>
-      {/* lista serie TV */}
-      <ul>
+
+        {/* card serie TV */}
         {series.map((serie) => (
-          <li key={serie.id}>
-            <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt={serie.name} />
-            <p>Titolo: {serie.name}</p>
-            <p>Titolo originale: {serie.original_name}</p>
-            <p>Lingua: {getFlag(serie.original_language)}</p>
-            {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
-            <p>Voto:
-              {Array.from({ length: 5 }, (_, i) => (
-                <i key={i} className={i < getStars(serie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-              ))}
-            </p>
-            <p>Tipo: 📺 Serie TV</p>
-          </li>
+          <div className="card" key={serie.id} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${serie.poster_path})` }}>
+            <div className="card-info">
+              <p>Titolo: {serie.name}</p>
+              <p>Titolo originale: {serie.original_name}</p>
+              <p>Lingua: {getFlag(serie.original_language)}</p>
+              <p>Voto:
+                {/* creiamo un array di 5 elementi e per ogni elemento mostriamo una stella piena o vuota in base al voto */}
+                {Array.from({ length: 5 }, (_, i) => (
+                  <i key={i} className={i < getStars(serie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                ))}
+              </p>
+              <p>Tipo: 📺 Serie TV</p>
+            </div>
+          </div>
         ))}
-      </ul>
+
+      </main>
 
     </div>
   );

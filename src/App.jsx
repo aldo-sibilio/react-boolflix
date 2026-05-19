@@ -110,6 +110,50 @@ function App() {
       {/* main con le card */}
       <main>
 
+        {/* carosello film popolari */}
+        <div className="carousel-section">
+          <h2>Film Popolari</h2>
+          <div className="carousel">
+            {popularMovies.map((movie) => (
+              <div className="card" key={movie.id} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>
+                <div className="card-info">
+                  <p>Titolo: {movie.title}</p>
+                  <p>Titolo originale: {movie.original_title}</p>
+                  <p>Lingua: {getFlag(movie.original_language)}</p>
+                  <p>Voto:
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <i key={i} className={i < getStars(movie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                    ))}
+                  </p>
+                  <p>Tipo: 🎬 Film</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* carosello serie popolari */}
+        <div className="carousel-section">
+          <h2>Serie TV Popolari</h2>
+          <div className="carousel">
+            {popularSeries.map((serie) => (
+              <div className="card" key={serie.id} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${serie.poster_path})` }}>
+                <div className="card-info">
+                  <p>Titolo: {serie.name}</p>
+                  <p>Titolo originale: {serie.original_name}</p>
+                  <p>Lingua: {getFlag(serie.original_language)}</p>
+                  <p>Voto:
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <i key={i} className={i < getStars(serie.vote_average) ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                    ))}
+                  </p>
+                  <p>Tipo: 📺 Serie TV</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* card film */}
         {movies.map((movie) => (
           <div className="card" key={movie.id} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${movie.poster_path})` }}>

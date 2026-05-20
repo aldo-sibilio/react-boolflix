@@ -96,7 +96,7 @@ function App() {
       {/* header con titolo e searchbar */}
       <header>
         <h1>BoolFlix</h1>
-        <div>
+        <form onSubmit={(e) => { e.preventDefault(); search(); }}>
           <input
             type="text"
             value={query}
@@ -104,7 +104,7 @@ function App() {
             placeholder="Cerca un film..."
           />
           <button onClick={search}>Cerca</button>
-        </div>
+        </form>
       </header>
 
       {/* main con le card */}

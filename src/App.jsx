@@ -192,6 +192,12 @@ function App() {
 
       </main>
 
+      <footer>
+        <div className="footer">
+          <h5>2026 Boolflix ®</h5>
+          </div>
+      </footer>
+
     </div>
   );
 }

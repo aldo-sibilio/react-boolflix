@@ -157,4 +157,10 @@ main {
         gap: 15px;
         text-align: center;
     }
+
+    .card {
+        width: 100px;
+        height: 200px;
+    }
+
 }

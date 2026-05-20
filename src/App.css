@@ -113,6 +113,7 @@ main {
     display: flex;
     gap: 10px;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 10px;
 }
 
@@ -131,6 +132,23 @@ main {
     margin-top: -30px;
     font-family: sans-serif;
     color: #787878
+}
+
+/* animazione fade in delle card */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 1s ease forwards;
 }
 
 @media (max-width: 768px) {
